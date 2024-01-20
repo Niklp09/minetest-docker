@@ -15,7 +15,7 @@ jobs:
       id: extract_branch
 
     - name: build image
-      run: docker build -t ghcr.io/minetest-hosting/minetest-docker:${{ steps.extract_branch.outputs.branch }} .
+      run: docker build -t ghcr.io/Niklp09/minetest-docker:${{ steps.extract_branch.outputs.branch }} .
 
     - name: Log in to the Container registry
       uses: docker/login-action@v3
@@ -25,4 +25,4 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Push image
-      run: docker push ghcr.io/minetest-hosting/minetest-docker:${{ steps.extract_branch.outputs.branch }}
+      run: docker push ghcr.io/Niklp09/minetest-docker:${{ steps.extract_branch.outputs.branch }}

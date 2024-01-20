@@ -73,6 +73,10 @@ RUN apk add --no-cache bzip2 \
 	sqlite-libs curl zlib gmp jsoncpp luajit \
 	postgresql-libs zstd-libs
 
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.18/community" > /etc/apk/repositories
+RUN apk add --no-cache luarocks
+RUN luarocks install busted
+
 RUN adduser -D minetest --uid 30000 -h /var/lib/minetest && \
 	chown -R minetest:minetest /var/lib/minetest
 
